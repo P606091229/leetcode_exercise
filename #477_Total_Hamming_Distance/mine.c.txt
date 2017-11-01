@@ -1,0 +1,23 @@
+int totalHammingDistance(int* nums, int numsSize) {
+    int answer, bit_diff, bit_is_1 = 0;
+    
+    for(int bit_count = 0; bit_count < 32; bit_count++ ) {
+        bit_is_1 = 0;
+        
+        for(int num_count = 0; num_count < numsSize; num_count++) {
+            //printf("nums[num_count] = %d\n", nums[num_count]);
+            //printf("bit_count = %d\n", bit_count);
+            
+            if (((nums[num_count] & (1 << bit_count)) >> bit_count)) {
+                bit_is_1 ++;
+            }
+            
+        }
+        printf("bit_is_1[%d] = %d\n", bit_count, bit_is_1);        
+        bit_diff = (numsSize - bit_is_1) * bit_is_1;
+        //printf("bit_diff = %d\n", bit_diff); 
+        answer += bit_diff;  
+        //printf("answer = %d\n", answer); 
+    }    
+    return answer;
+}

@@ -1,0 +1,27 @@
+void swap(int *a, int *b)
+
+{
+
+  if(*a != *b)
+
+      *a ^= *b ^= *a ^= *b;
+
+}
+
+void rotate(int ** matrix, int row, int col)
+{
+    int i, j;
+    for(i = 0; i < ((row + 1) / 2); i++){
+         for(j = i; j < (col - 1 - i); j++){
+             printf("i, j = %d, %d\n", i, j);
+             swap(&matrix[j][col - i - 1], &matrix[i][j]);
+             printf("%d, %d - > %d, %d\n",j, (col - i -1), i, j);
+             swap(&matrix[col - j - 1][i], &matrix[col - i - 1][col - j - 1]);
+             printf("%d, %d - > %d, %d\n",(col - j - 1), i, (col - i - 1), (col - j - 1));
+             swap(&matrix[i][j], &matrix[col - i - 1][col - j - 1]);
+             printf("%d, %d - > %d, %d\n",i , j, (col - i - 1), (col - j - 1));
+
+         }
+    }
+}
+
